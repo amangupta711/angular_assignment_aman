@@ -1,0 +1,41 @@
+<h2> List of all Players</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Player Name</th>
+            <th> Player Teams </th>
+            <th> Player Type </th>
+            <th> Number of Matches</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let player of players" >
+            <td> {{player.fullName}} </td>
+            <td> {{ player.playerTeam }} </td>
+            <td> {{ player.playerType }} </td>
+            <td> {{ player.numberMatch }} </td>
+
+
+            <td>
+                <button (click) = "updatePlayer(player.id)" class = "btn btn-info"> Update</button>
+                
+                <button
+             class="btn btn-danger"   style="margin-left: 10px"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+             placement="left"
+             (confirm)="deletePlayer(player.id)"
+            (cancel)="cancelClicked = true">
+             Delete
+             </button>
+              
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>
+
+

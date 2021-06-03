@@ -1,0 +1,32 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update Player </h3>
+        <form #myForm="ngForm"  (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label> Player Name</label>
+            <input type="text" class ="form-control" id = "fullName" 
+                [(ngModel)] = "player.fullName" name = "fullName" required minlength="5" placeholder="Min 5 letter">
+        </div>
+    
+        <div class="form-group">
+            <label> Player Type</label>
+            <input type="text" class ="form-control" id = "playerType" 
+                [(ngModel)] = "player.playerType" name = "playerType" required minlength="6" placeholder="Bowler Or Batsman">
+        </div>
+
+        <div class="form-group">
+            <label> Number of Matches</label>
+            <input type="text" class ="form-control" id = "numberMatch" 
+                [(ngModel)] = "player.numberMatch" name = "numberMatch" required minlength="1" placeholder="Enter Number of Matches">
+        </div>
+    
+        <div class="form-group">
+            <label> Player's Teams</label>
+            <input type="text" class ="form-control" id = "playerTeam" 
+                [(ngModel)] = "player.playerTeam" name = "playerTeam" required minlength="1"  placeholder="Teams Player Plays for"> 
+        </div>
+    
+        <button class = "btn btn-success" type ="submit" [disabled]="myForm.invalid">Submit</button>
+    
+    </form>
+    </div> 

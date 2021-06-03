@@ -1,0 +1,40 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Player } from './player';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PlayerService {
+
+
+  private baseURL="http://localhost:8090/api/v1/players";
+
+  constructor(private httpClient: HttpClient) { }
+
+
+getPlayersList():Observable<Player[]>{
+
+
+  return this.httpClient.get<Player[]>(`${this.baseURL}`)
+}
+
+createPlayer(player:Player):Observable<object>{
+
+  return this.httpClient.post(`${this.baseURL}`,player);
+}
+
+getPlayerById(id: number): Observable<Player>{
+  return this.httpClient.get<Player>(`${this.baseURL}/${id}`);
+}
+
+updatePlayer(id: number, player: Player): Observable<Object>{
+  return this.httpClient.put(`${this.baseURL}/${id}`, player);
+}
+
+deletePlayer(id: number): Observable<Object>{
+  return this.httpClient.delete(`${this.baseURL}/${id}`);
+}
+
+}
